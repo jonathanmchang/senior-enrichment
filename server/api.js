@@ -55,6 +55,21 @@ api.put('/students/:id', (req,res,next) => {
 	.catch(next)
 })
 
+api.delete('/students/:id', (req,res,next) => {
+	Student.findOne({
+		where: {
+			id: Number(req.params.id)
+		}
+	})
+	.then(student => {
+		return student.destroy()
+	})
+	.then(student => {
+		res.json(student)
+	})
+	.catch(next)
+})
+
 api.get('/campuses', (req,res,next) => {
 	Campus.findAll({})
 	.then(campuses => {
@@ -63,10 +78,10 @@ api.get('/campuses', (req,res,next) => {
 	.catch(next)
 })
 
-api.get('/campuses/:name', (req,res,next) => {
+api.get('/campuses/:id', (req,res,next) => {
 	Campus.findOne({
 		where: {
-			name: req.params.name
+			id: Number(req.params.id)
 		}
 	})
 	.then(campuses => {
@@ -86,10 +101,10 @@ api.post('/campuses', (req,res,next) => {
 	.catch(next)
 })
 
-api.put('/campuses/:name', (req,res,next) => {
+api.put('/campuses/:id', (req,res,next) => {
 	Campus.findOne({
 		where: {
-			name: req.params.name
+			id: Number(req.params.id)
 		}
 	})
 	.then(campus => {
@@ -97,6 +112,21 @@ api.put('/campuses/:name', (req,res,next) => {
 	})
 	.then(updatedcampus => {
 		res.json(updatedcampus)
+	})
+	.catch(next)
+})
+
+api.delete('/campuses/:id', (req,res,next) => {
+	Campus.findOne({
+		where: {
+			id: Number(req.params.id)
+		}
+	})
+	.then(campus => {
+		return campus.destroy()
+	})
+	.then(campus => {
+		res.json(campus)
 	})
 	.catch(next)
 })
