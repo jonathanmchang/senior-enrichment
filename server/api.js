@@ -8,6 +8,53 @@ const { Campus, Student } = require('../db/models');
 	// Ideally you would have something to handle this, so if you have time try that out!
 // api.get('/hello', (req, res) => res.send({hello: 'world'}))
 
+api.get('/students', (req,res,next) => {
+	Student.findAll({})
+	.then(students => {
+		res.json(students)
+	})
+	.catch(next)
+})
+
+api.get('/students/:id', (req,res,next) => {
+	Student.findOne({
+		where: {
+			id: Number(req.params.id)
+		}
+	})
+	.then(student => {
+		res.json(student)
+	})
+	.catch(next)
+})
+
+api.post('/students', (req,res,next) => {
+	Student.create({
+		name: req.body.name,
+		age: req.body.age,
+		email: req.body.email,
+	})
+	.then(student => {
+		res.json(student)
+	})
+	.catch(next)
+})
+
+api.put('/students/:id', (req,res,next) => {
+	Student.findOne({
+		where: {
+			id: Number(req.params.id)
+		}
+	})
+	.then(student => {
+		return student.update(req.body)
+	})
+	.then(updatedstudent => {
+		res.json(updatedstudent)
+	})
+	.catch(next)
+})
+
 api.get('/campuses', (req,res,next) => {
 	Campus.findAll({})
 	.then(campuses => {
@@ -28,7 +75,7 @@ api.get('/campuses/:name', (req,res,next) => {
 	.catch(next)
 })
 
-api.post('/newcampus', (req,res,next) => {
+api.post('/campuses', (req,res,next) => {
 	Campus.create({
 		name: req.body.name,
 		imageurl: req.body.imageurl
@@ -39,7 +86,7 @@ api.post('/newcampus', (req,res,next) => {
 	.catch(next)
 })
 
-api.put('/updatecampus/:name', (req,res,next) => {
+api.put('/campuses/:name', (req,res,next) => {
 	Campus.findOne({
 		where: {
 			name: req.params.name
