@@ -131,4 +131,9 @@ api.delete('/campuses/:id', (req,res,next) => {
 	.catch(next)
 })
 
+// error catcher
+api.use(function (err,req,res,next) {
+	res.status(500).send(err.message);
+});
+
 module.exports = api
