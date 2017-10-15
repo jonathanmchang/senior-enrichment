@@ -33,6 +33,7 @@ api.post('/students', (req,res,next) => {
 		name: req.body.name,
 		age: req.body.age,
 		email: req.body.email,
+		campusId: req.body.campusId,
 	})
 	.then(student => {
 		res.json(student)
