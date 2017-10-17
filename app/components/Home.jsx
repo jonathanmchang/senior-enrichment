@@ -16,7 +16,7 @@ export default () => (
                         </div>
                     </NavLink>
                     <NavLink to={'/campuses'}>
-                        <div className="btn btn-primary btn-raise btn=lg pull-right">Mangage Campuses
+                        <div className="btn btn-primary btn-raise btn=lg pull-right">Manage Campuses
                         </div>
                 </NavLink>
                 </div>

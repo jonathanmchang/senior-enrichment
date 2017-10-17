@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+.card-title {
+  color: black;
+  text-align: center;
+}
+
 li .active {
   border-style: solid;
   border-color: cadetblue
