@@ -5,7 +5,7 @@ import axios from('axios');
 const GET_CAMPUSES = 'GET_CAMPUSES';
 const ADD_NEW_CAMPUS = 'ADD_NEW_CAMPUS';
 const DELETE_CAMPUS = 'DELETE_CAMPUS';
-const UPDATE_CAMPUS = 'UPDTATE_CAMPUS';
+const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
 
 // Action Creators
 
@@ -14,6 +14,7 @@ export function getCampuses(campuses) {
         type: GET_CAMPUSES,
         campuses
     };
+    return action;
 };
 
 export function addCampus(campus) {
@@ -21,6 +22,7 @@ export function addCampus(campus) {
         type: ADD_NEW_CAMPUS,
         campus
     };
+    return action;
 };
 
 export function deleteCampus(campusId) {
@@ -28,6 +30,7 @@ export function deleteCampus(campusId) {
         type: DELETE_CAMPUS,
         campusId 
     };
+    return action;
 };
 
 export function updateCampus(campusId) {
@@ -35,6 +38,7 @@ export function updateCampus(campusId) {
         type: UPDATE_CAMPUS,
         campusId
     };
+    return action;
 };
 
 // Thunks
@@ -52,7 +56,7 @@ export function fetchCampuses() {
 
 export function postNewCampus(campus, history) {
     return function thunk(dispatch) {
-        return axios.post('/api/campuses')
+        return axios.post('/api/campuses', campus)
             .then(res => res.data)
             .then(newCampus => {
                 const action = addCampus(newCampus);
@@ -64,7 +68,7 @@ export function postNewCampus(campus, history) {
 
 export function deleteCampus(campusId) {
     return function thunk(dispatch) {
-        return axios.delete('/api/campuses/' + campousId)
+        return axios.delete('/api/campuses/' + campusId)
             .then(res => res.data)
             .then(() => {
                 const action = deleteCampus(campusId);
@@ -78,7 +82,7 @@ export function putCampus(campus, campusId, history) {
         return axios.put('/api/campuses' + campusId, campus)
             .then(res => res.data)
             .then(updatedCampus => {
-                const action = updateCampus(campus);
+                const action = updateCampus(updatedCampus);
                 dispatch(action);
                 // history.push(`/campuses/`);
             });
@@ -93,12 +97,15 @@ export default function reducer (state = [], action) {
 
         case(GET_CAMPUSES):
             return action.campuses;
+
         case(ADD_NEW_CAMPUS):
             return [...state, action.campus];
+
         case(DELETE_CAMPUS):
             return [...state].filter((campus) => {
                 return campus.id !== action.campus.id
             });
+            
         case(UPDATE_CAMPUS):
             const filteredCampuses = [...state].filter((campus) => {
                 return campus.id !== action.campus.id

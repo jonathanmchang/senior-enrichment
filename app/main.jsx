@@ -7,15 +7,30 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import store from './store'
 
 import Home from './components/Home';
+import Students from './components/Students';
+import Campuses from './components/Campuses';
+import Sidebar from './components/Sidebar';
+import Footer from './components/Footer';
 
 
 render (
   <Provider store={store}>
     <Router>
-      <div> 
-      <Switch> 
-      <Route exact path="/home" componen={Home} /> 
-        </Switch>
+      <div id='main' className='container-fluid'> 
+        <div className="col-xs-2">
+          <Sidebar />
+        </div>
+        <div className="col-xs-10">
+          <Switch> 
+            <Route path="/home" component={Home} /> 
+            <Route path="/students" component={Students} />
+            <Route path='/campuses' component={Campuses} />
+
+
+            <Redirect to='/home' />
+          </Switch>
+        </div>
+        <Footer />
       </div>
     </Router>
   </Provider>,

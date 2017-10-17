@@ -87,3 +87,25 @@ export function putStudent(student, history) {
     }
 }
 
+// Reducer
+
+export default function reducer (state = {
+    campus: {name: ''},
+    students: []
+},action) {
+    switch(action.type) {
+
+        case GET_STUDENTS:
+            return action.students;
+        
+        case ADD_ONE_STUDENT:
+            return Object.assign({}, state, {students: [...state.students, action.student]});
+
+        case REMOVE_STUDENT:
+            return Object.assign({}, state, {students: [...state.students].filter(student => student.id != action.studentId)});
+
+        default:
+            return state
+    }
+}
+
