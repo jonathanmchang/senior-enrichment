@@ -22,12 +22,12 @@ const campusCard = (campus, deleteCampus) => (
 class Campuses extends Component {
 
     componentDidMount() {
-        console.log("Mounting....")
-        this.props.getAllCampuses()
+        // console.log("Mounting....")
+        this.props.fetchCampuses()
     }
 
     render() {
-        console.log('******', this.props)
+        // console.log('******', this.props)
         
         return (
             <div className="wrapper">
@@ -50,7 +50,7 @@ class Campuses extends Component {
                         <div className="container">
                             <div className="row tim-row">
                                 <NavLink to={'/campuses/new'}>
-                                    <button className="btn btn-danger pull-right">
+                                    <button className="btn btn-secondary pull-right">
                                         Add New Campus
                                     </button>
                                 </NavLink>
@@ -74,7 +74,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        getAllCampuses() {
+        fetchCampuses() {
             console.log('Dispatching....')
             dispatch(fetchCampuses())
         },

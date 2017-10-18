@@ -34,10 +34,12 @@ export function fetchStudentsOfCampus (campusid) {
 }
 
 export function fetchStudents () {
+  console.log('Hitting fetchStudents')
   return function thunk (dispatch) {
     return axios.get('/api/students')
       .then(res => res.data)
       .then(students => {
+        console.log('redux students', students)
         const action = getStudents({campus: {name: 'All Students'}, students});
         dispatch(action);
       });

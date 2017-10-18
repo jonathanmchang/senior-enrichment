@@ -9,7 +9,7 @@ import store from './store'
 import Home from './components/Home';
 import Students from './components/Students';
 import Campuses from './components/Campuses';
-import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 
@@ -17,19 +17,15 @@ render (
   <Provider store={store}>
     <Router>
       <div id='main' className='container-fluid'> 
-        <div className="col-xs-2">
-          <Sidebar />
-        </div>
-        <div className="col-xs-10">
-          <Switch> 
-            <Route path="/home" component={Home} /> 
-            <Route path="/students" component={Students} />
-            <Route path='/campuses' component={Campuses} />
+        <Navbar />
+        <Switch> 
+          <Route path="/home" component={Home} /> 
+          <Route path="/students" component={Students} />
+          <Route path='/campuses' component={Campuses} />
 
 
-            <Redirect to='/home' />
-          </Switch>
-        </div>
+          <Redirect to='/home' />
+        </Switch>
         <Footer />
       </div>
     </Router>
