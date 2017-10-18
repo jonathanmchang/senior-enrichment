@@ -22,16 +22,6 @@ export function getStudents (students) {
 }
 
 // THUNKS
-export function fetchStudentsOfCampus (campusid) {
-  return function thunk (dispatch) {
-    return axios.get('/api/campuses/'+ campusid)
-      .then(res => res.data)
-      .then(students => {
-        const action = getStudents(students);
-        dispatch(action);
-      });
-  };
-}
 
 export function fetchStudents () {
   console.log('Hitting fetchStudents')
@@ -40,7 +30,7 @@ export function fetchStudents () {
       .then(res => res.data)
       .then(students => {
         console.log('redux students', students)
-        const action = getStudents({campus: {name: 'All Students'}, students});
+        const action = getStudents(students);
         dispatch(action);
       });
   };
@@ -80,21 +70,18 @@ export function deleteStudent (campusId) {
 }
 
 // REDUCER
-export default function reducer (state = {
-  campus: {name: ''},
-  students: []
-}, action) {
+export default function reducer (state = [], action) {
 
   switch (action.type) {
 
     case GET_STUDENTS:
       return action.students;
 
-    case ADD_ONE_STUDENT:
-      return Object.assign({}, state, {students: [...state.students, action.student]});
+    // case ADD_ONE_STUDENT:
+    //   return Object.assign({}, state, {students: [...state.students, action.student]});
 
-    case REMOVE_STUDENT:
-      return Object.assign({}, state, {students: [...state.students].filter(student => student.id != action.studentId)});
+    // case REMOVE_STUDENT:
+    //   return Object.assign({}, state, {students: [...state.students].filter(student => student.id != action.studentId)});
 
     default:
       return state;

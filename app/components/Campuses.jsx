@@ -12,7 +12,7 @@ const campusCard = (campus, deleteCampus) => (
         </div>
         <div className='cardcontainer'>
             <h2 className='card-title'>{campus.name}</h2>
-            <NavLink to={'/campuses/' + campus.id} className='btn btn-primary'>See More</NavLink>
+            <NavLink to={'/campuses/' + campus.id} className='btn btn-secondary'>See More</NavLink>
             <div className='btn btn-danger pull-right' onClick={() =>deleteCampus(campus.id)}>Delete</div>
         </div>
         </div>
