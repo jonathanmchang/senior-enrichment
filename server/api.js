@@ -9,7 +9,9 @@ const { Campus, Student } = require('../db/models');
 // api.get('/hello', (req, res) => res.send({hello: 'world'}))
 
 api.get('/students', (req,res,next) => {
-	Student.findAll({})
+	Student.findAll({
+		include: [Campus]
+	})
 	.then(students => {
 		res.json(students)
 	})

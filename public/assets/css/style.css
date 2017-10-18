@@ -1,6 +1,7 @@
 li .active {
     border-style: solid;
-    border-color: cadetblue
+    /* border-color: cadetblue */
+    border-color: white;
 }
 
 

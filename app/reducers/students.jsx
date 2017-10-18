@@ -21,7 +21,7 @@ export function getStudents (students) {
   return action;
 }
 
-// THUNK CREATORS
+// THUNKS
 export function fetchStudentsOfCampus (campusid) {
   return function thunk (dispatch) {
     return axios.get('/api/campuses/'+ campusid)

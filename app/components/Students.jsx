@@ -6,13 +6,14 @@ import { fetchStudents, deleteStudent } from '../reducers';
 
 
 
-const studentRow = (student, deleteStudent) => {
+const studentRow = (student, deleteStudent, index) => {
     return (
         <tr key={student.id}>
-            <td className='text-center'>{student.id}</td>
+            <td className='text-center'>{index+1}</td>
             <td>{student.name}</td>
             <td>{student.age}</td>
-            <td>{student.campusID ? student.campusID.name : 'None'}</td>
+            <td>{student.campus ? student.campus.name : 'None'}</td>
+            <td>{student.email}</td>
             <td className='td-actions text-right'>
                 {/*<NavLink to={'/students/' + student.id}>
                     <button type='button' rel='tooltip' title='View Profile' className='btn btn-info btn-simple btn-xs'>
@@ -28,7 +29,7 @@ const studentRow = (student, deleteStudent) => {
                     <button type='button' rel='tooltip' title='Delete Profile' className='btn btn-info btn-simple btn-xs' onClick={()=>deleteStudent(student.id)}>
                         <i className='fa fa-ban'></i>
                     </button>
-    </NavLink>*/}
+                </NavLink>*/}
             </td>
         </tr>
     )
@@ -43,6 +44,7 @@ class Students extends Component {
 
     render() {
         console.log('******', this.props.students)
+        // console.log('######', this.props.students.campus.name)
         return (
             <div className="wrapper">
                 <div className="header header-nofilter">
@@ -68,11 +70,12 @@ class Students extends Component {
                                         <th>Name</th>
                                         <th>Age</th>
                                         <th>Campus</th>
+                                        <th>Email</th>
                                         <th className="text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {this.props.students.map(student => studentRow(student, this.props.deleteStudent))}
+                                    {this.props.students.map((student,index) => studentRow(student, this.props.deleteStudent, index))}
                                 </tbody>
                             </table>
                         </div>
