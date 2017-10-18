@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { deleteStudent,fetchStudents } from '../reducers';
+import { deleteStudent,fetchStudents,fetchCampuses } from '../reducers';
 
 const studentRow = (student, deleteStudent, index) => {
     return (
@@ -33,18 +33,18 @@ const studentRow = (student, deleteStudent, index) => {
     )
 }
 
-class SingleCampus extends Component {
 
+class SingleCampus extends Component {
+    
     componentDidMount() {
         console.log('mounting........')
         this.props.fetchStudents()
+        this.props.fetchCampuses()
     }
-
-    // let campusTitle = this.props.campus.name 
-
+    
     render() {
-        console.log('******', this.props)
-        // console.log('######', this.props.students.campus.name)
+        const campusTitle = this.props.campuses.filter(campus=>campus.id==this.props.match.params.campusId)
+        
         return (
             <div className="wrapper">
                 <div className="header header-nofilter">
@@ -55,7 +55,11 @@ class SingleCampus extends Component {
                                 <br />
                                 <br />
                                 <br />
-                                <h1 className="title text-center" style={{color: "white"}}>All Students</h1>
+                                <h1 className="title text-center" style={{color: "white"}}>
+                                    {
+                                        campusTitle.length ? campusTitle[0].name : false
+                                    }
+                                </h1>
                             </div>
                         </div>
                     </div>
@@ -89,7 +93,8 @@ class SingleCampus extends Component {
 
 const mapStateToProps = function (state) {
     return {
-        students: state.students 
+        students: state.students,
+        campuses: state.campuses 
     };
 };
 
@@ -98,6 +103,10 @@ const mapDispatchToProps = function (dispatch, ownProps) {
         fetchStudents() {
             console.log('dispatching.........')
             dispatch(fetchStudents())
+        },
+        fetchCampuses() {
+            console.log('dispatching.......')
+            dispatch(fetchCampuses())
         },
         deleteStudent(studentId) {
             dispatch(deleteStudent(studentId))
