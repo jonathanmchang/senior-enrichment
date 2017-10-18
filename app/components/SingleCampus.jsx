@@ -13,7 +13,7 @@ const studentRow = (student, deleteStudent, index) => {
             <td>{student.campus ? student.campus.name : 'None'}</td>
             <td>{student.email}</td>
             <td className='td-actions text-right'>
-                {/*<NavLink to={'/students/' + student.id}>
+                <NavLink to={'/students/' + student.id}>
                     <button type='button' rel='tooltip' title='View Profile' className='btn btn-info btn-simple btn-xs'>
                         <i className='fa fa-user'></i>
                     </button>
@@ -23,11 +23,9 @@ const studentRow = (student, deleteStudent, index) => {
                         <i className='fa fa-pencil'></i>
                     </button>
                 </NavLink>
-                <NavLink>
                     <button type='button' rel='tooltip' title='Delete Profile' className='btn btn-info btn-simple btn-xs' onClick={()=>deleteStudent(student.id)}>
                         <i className='fa fa-ban'></i>
-                    </button>
-                </NavLink>*/}
+                </button>
             </td>
         </tr>
     )

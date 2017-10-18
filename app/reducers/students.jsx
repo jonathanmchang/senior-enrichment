@@ -58,13 +58,13 @@ export function putStudent (student, history) {
 }
 
 
-export function deleteStudent (campusId) {
+export function deleteStudent (studentId) {
 
   return function thunk (dispatch) {
-    return axios.delete('/api/students/' + campusId )
+    return axios.delete('/api/students/' + studentId )
       .then(res => res.data)
       .then(() => {
-        dispatch(removeStudent(campusId));
+        dispatch(removeStudent(studentId));
       });
   };
 }
@@ -80,8 +80,8 @@ export default function reducer (state = [], action) {
     // case ADD_ONE_STUDENT:
     //   return Object.assign({}, state, {students: [...state.students, action.student]});
 
-    // case REMOVE_STUDENT:
-    //   return Object.assign({}, state, {students: [...state.students].filter(student => student.id != action.studentId)});
+    case REMOVE_STUDENT:
+      return [...state].filter(student=>student.id != action.studentId);
 
     default:
       return state;
