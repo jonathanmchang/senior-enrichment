@@ -3,13 +3,13 @@ import { withRouter, NavLink } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { putCampus, fetchCampuses } from '../reducers';
-
+import axios from 'axios';
 
 class EditCampus extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name:  '',
+            name: '',
             imageurl: ''
         }
 
@@ -18,7 +18,8 @@ class EditCampus extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchCampuses() 
+        this.props.fetchCampuses()
+        
     }
 
     handleName(event) {
@@ -30,7 +31,7 @@ class EditCampus extends Component {
     }
     
     render() {
-        // console.log('***this.props', this.props)
+        console.log('***this.props', this.props)
         const campusId = this.props.match.params.campusId
         const campusName = this.props.campuses.filter(campus=>campus.id==campusId)
         return (
@@ -57,7 +58,7 @@ class EditCampus extends Component {
                                     <form onSubmit={(event) => this.props.handleSubmit(event,this.state.name,this.state.imageurl,campusId)}>
                                         <div>
                                             <label className="control-label">CampusName</label>
-                                            <input type='text' className='form-control' name='name' onChange={this.handleName}/>
+                                            <input type='text' className='form-control' name='name' onChange={this.handleName} />
                                         </div>
                                         <div>
                                             <label className="control-label">Campus Image Url</label>

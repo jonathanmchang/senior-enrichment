@@ -81,7 +81,7 @@ class EditStudent extends Component {
                                     </div>
                                     <div>
                                         <label className="control-label">Campus</label>
-                                        <select className='form-control' name='campus' onChange={this.handleCampus}>
+                                        <select className='form-control' name='campus' onChange={this.handleCampus}><option></option>
                                             {
                                                 this.props.campuses.map(campus => <option key={campus.id} value={campus.id}>{campus.name}</option>)
                                             }{/**/}
@@ -119,9 +119,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(fetchStudents())
         },
         handleSubmit(event, name, age, email, campus, studentId) {
+            const campusId = campus
             event.preventDefault()
             console.log('handlesubmit', name,age,email,campus,studentId)
-            dispatch(putStudent({name,age,email,campus}, studentId, ownProps.history))
+            dispatch(putStudent({name,age,email,campusId}, studentId, ownProps.history))
         }
     }
 }

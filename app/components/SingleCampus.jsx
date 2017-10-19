@@ -42,7 +42,7 @@ class SingleCampus extends Component {
     
     render() {
         const campusTitle = this.props.campuses.filter(campus=>campus.id==this.props.match.params.campusId)
-        console.log('***', this.props)
+        // console.log('***', this.props)
         return (
             <div className="wrapper">
                 <div className="header header-nofilter">

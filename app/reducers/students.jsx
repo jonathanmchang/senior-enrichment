@@ -37,17 +37,19 @@ export function fetchStudents () {
 export function postNewStudent (student, history) {
   return function thunk (dispatch) {
     return axios.post('/api/students', student)
-      .then(res => res.data)
-      .then(newStudent => {
-        history.push(`/campuses/${newStudent.campusId}`);
-      });
+    .then(res => res.data)
+    .then(newStudent => {
+      history.push(`/campuses/${newStudent.campusId}`);
+    });
   };
 }
 export function putStudent (student, studentId ,history) {
+  console.log('hitting putStudent', student, studentId)
   return function thunk (dispatch) {
     return axios.put('/api/students/' + studentId, student)
       .then(res => res.data)
       .then(newStudent => {
+        console.log('newStudent', newStudent)
         history.push(`/campuses/${newStudent.campusId}`);
       });
   };

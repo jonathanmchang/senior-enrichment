@@ -77,7 +77,7 @@ class AddStudent extends Component {
                                         </div>
                                         <div>
                                             <label className="control-label">Campus</label>
-                                            <select className='form-control' name='campus' onChange={this.handleCampus}>
+                                            <select className='form-control' name='campus' onChange={this.handleCampus}><option></option>
                                                 {
                                                     this.props.campuses.map(campus => <option key={campus.id} value={campus.id}>{campus.name}</option>)
                                                 }

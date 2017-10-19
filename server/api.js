@@ -44,7 +44,6 @@ api.post('/students', (req,res,next) => {
 })
 
 api.put('/students/:id', (req,res,next) => {
-	console.log('req.body', req.body)
 	Student.findOne({
 		where: {
 			id: Number(req.params.id)
