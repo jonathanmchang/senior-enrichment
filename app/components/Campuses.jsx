@@ -27,7 +27,7 @@ class Campuses extends Component {
     }
 
     render() {
-        // console.log('******', this.props)
+        // console.log('******this.props', this.props)
         
         return (
             <div className="wrapper">
@@ -79,7 +79,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         fetchCampuses() {
-            console.log('Dispatching....')
+            // console.log('Dispatching....')
             dispatch(fetchCampuses())
         },
         deleteCampus(campusId) {

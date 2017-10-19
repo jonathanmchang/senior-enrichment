@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { postNewStudent } from '../reducers';
+import { postNewStudent,fetchCampuses } from '../reducers';
 
 class AddStudent extends Component {
     constructor(props) {
@@ -36,8 +36,14 @@ class AddStudent extends Component {
         this.setState({campus: event.target.value})
     }
 
-    render() {
+    componentDidMount() {
+        console.log('Mounting.....')
+        this.props.fetchCampuses()
 
+    }
+    
+    render() {
+        console.log(this.props)
         return (
             <div className="wrapper">
                 <div className='header header-nofilter'>
@@ -71,7 +77,11 @@ class AddStudent extends Component {
                                         </div>
                                         <div>
                                             <label className="control-label">Campus</label>
-                                            <input type='text' className='form-control' name='name' onChange={this.handleCampus}/>
+                                            <select className='form-control' name='campus' onChange={this.handleCampus}>
+                                                {
+                                                    this.props.campuses.map(campus => <option key={campus.id} value={campus.id}>{campus.name}</option>)
+                                                }
+                                            </select>
                                         </div>
                                         <button type='submit' className='btn btn-success pull-right'>Submit
                                         </button>
@@ -86,15 +96,25 @@ class AddStudent extends Component {
     };
 };
 
+const mapStateToProps = (state) => {
+    return {
+        campuses: state.campuses
+    }
+}
+
 const mapDispatchToProps = (dispatch,ownProps) => {
     return {
         handleSubmit(event, name, age, email, campusId) {
             event.preventDefault()
             console.log('dispatching......', this.state)
             dispatch(postNewStudent({name,age,email,campusId}, ownProps.history))
+        },
+        fetchCampuses() {
+            console.log('dispatching fetch')
+            dispatch(fetchCampuses())
         }
     }
 }
 
-const addStudentContainer = connect(null, mapDispatchToProps)(AddStudent);
+const addStudentContainer = connect(mapStateToProps, mapDispatchToProps)(AddStudent);
 export default addStudentContainer;

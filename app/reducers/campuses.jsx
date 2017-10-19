@@ -29,12 +29,12 @@ export function getCampuses (campuses) {
 // THUNK CREATORS
 
 export function fetchCampuses () {
-  // console.log('*******hittingline32')
+  console.log('*******hittingline32')
   return function thunk (dispatch) {
     return axios.get('/api/campuses')
       .then(res => res.data)
       .then(campuses => {
-        // console.log('redux campuses', campuses)
+        console.log('redux campuses', campuses)
         const action = getCampuses(campuses);
         dispatch(action);
       });

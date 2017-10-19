@@ -24,12 +24,12 @@ export function getStudents (students) {
 // THUNKS
 
 export function fetchStudents () {
-  console.log('Hitting fetchStudents')
+  // console.log('Hitting fetchStudents')
   return function thunk (dispatch) {
     return axios.get('/api/students')
       .then(res => res.data)
       .then(students => {
-        console.log('redux students', students)
+        // console.log('redux students', students)
         const action = getStudents(students);
         dispatch(action);
       });
@@ -37,12 +37,12 @@ export function fetchStudents () {
 }
 
 export function postNewStudent (student, history) {
-  console.log('hitting postNewStudent', student)
+  // console.log('hitting postNewStudent', student)
   return function thunk (dispatch) {
     return axios.post('/api/students', student)
       .then(res => res.data)
       .then(newStudent => {
-        console.log('newStudent: ', newStudent)
+        // console.log('newStudent: ', newStudent)
         history.push(`/campuses/${newStudent.campusId}`);
       });
   };

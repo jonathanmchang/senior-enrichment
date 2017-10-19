@@ -31,7 +31,6 @@ api.get('/students/:id', (req,res,next) => {
 })
 
 api.post('/students', (req,res,next) => {
-	console.log(req.body)
 	Student.create({
 		name: req.body.name,
 		age: req.body.age,
