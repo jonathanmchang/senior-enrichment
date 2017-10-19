@@ -37,13 +37,13 @@ class AddStudent extends Component {
     }
 
     componentDidMount() {
-        console.log('Mounting.....')
+        // console.log('Mounting.....')
         this.props.fetchCampuses()
 
     }
     
     render() {
-        console.log(this.props)
+
         return (
             <div className="wrapper">
                 <div className='header header-nofilter'>
