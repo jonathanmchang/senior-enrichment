@@ -63,6 +63,13 @@ class SingleCampus extends Component {
                     </div>
                 </div>
                 <div className="main main-raised main-translucent-light">
+                    <div className="col-md-4 center-block">
+                        <NavLink to={'/students/addStudent'}>
+                            <button className="btn btn-secondary">
+                                Add New Student
+                            </button>
+                        </NavLink>
+                    </div>                            
                     <div className="section">
                         <div className="container">
                             <table className="table">

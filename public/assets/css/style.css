@@ -4,10 +4,21 @@ li .active {
     border-color: white;
 }
 
+.form-control {
+    color: white;
+}
+
+.test-padding {
+    padding: 100px;
+}
+
 .fa {
     color:white;
 }
 
+.btn-black {
+    background-color:black;
+}
 
 .card-title {
     text-align: center;

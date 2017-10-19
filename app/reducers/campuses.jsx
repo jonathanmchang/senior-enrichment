@@ -42,13 +42,13 @@ export function fetchCampuses () {
 }
 
 export function postNewCampus (campus, history) {
-
   return function thunk (dispatch) {
     return axios.post('/api/campuses', campus)
       .then(res => res.data)
       .then(newCampus => {
+        console.log('newCampus: ', newCampus.id)
         dispatch(addCampus(newCampus));
-        history.push(`/campuses/`);
+        history.push(`/campuses/${newCampus.id}`);
       });
   };
 }

@@ -12,7 +12,7 @@ const campusCard = (campus, deleteCampus) => (
         </div>
         <div className='cardcontainer'>
             <h2 className='card-title'>{campus.name}</h2>
-            <NavLink to={'/campuses/' + campus.id} className='btn btn-secondary'>See More</NavLink>
+            <NavLink to={'/campuses/' + campus.id} className='btn btn-black'>See More</NavLink>
             <div className='btn btn-danger pull-right' onClick={() =>deleteCampus(campus.id)}>Delete</div>
         </div>
         </div>
@@ -46,13 +46,17 @@ class Campuses extends Component {
                 </div>
 
                 <div className="main main-raised main-translucent-light">
+                <div className="col-md-4 center-block">
+                    <NavLink to={'/campuses/addCampus'}>
+                        <button className="btn btn-secondary">
+                            Add New Campus
+                        </button>
+                    </NavLink>
+                </div>
                     <div className="section">
                         <div className="container">
                             <div className="row tim-row">
                                 <NavLink to={'/campuses/new'}>
-                                    <button className="btn btn-secondary pull-right">
-                                        Add New Campus
-                                    </button>
                                 </NavLink>
                             </div>
                             <div className="row tim-row">

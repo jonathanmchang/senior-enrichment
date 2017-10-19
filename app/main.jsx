@@ -12,6 +12,8 @@ import Campuses from './components/Campuses';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import SingleCampus from './components/SingleCampus';
+import AddCampus from './components/AddCampus';
+import AddStudent from './components/AddStudent';
 
 
 render (
@@ -21,7 +23,9 @@ render (
         <Navbar />
         <Switch> 
           <Route path="/home" component={Home} /> 
+          <Route exact path='/students/addStudent' component={AddStudent} />
           <Route path="/students" component={Students} />
+          <Route exact path='/campuses/addCampus' component={AddCampus} />
           <Route exact path='/campuses' component={Campuses} />
           <Route path='/campuses/:campusId' component={SingleCampus} />
 

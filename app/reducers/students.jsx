@@ -37,12 +37,13 @@ export function fetchStudents () {
 }
 
 export function postNewStudent (student, history) {
-
+  console.log('hitting postNewStudent', student)
   return function thunk (dispatch) {
     return axios.post('/api/students', student)
       .then(res => res.data)
       .then(newStudent => {
-        history.push(`/campuses/${newStudent.student.campusId}`);
+        console.log('newStudent: ', newStudent)
+        history.push(`/campuses/${newStudent.campusId}`);
       });
   };
 }
