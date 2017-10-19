@@ -42,17 +42,13 @@ class SingleCampus extends Component {
     
     render() {
         const campusTitle = this.props.campuses.filter(campus=>campus.id==this.props.match.params.campusId)
-        
+        console.log('***', this.props)
         return (
             <div className="wrapper">
                 <div className="header header-nofilter">
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-12">
-                                <br />
-                                <br />
-                                <br />
-                                <br />
+                            <div className="col-md-12 test-padding">
                                 <h1 className="title text-center" style={{color: "white"}}>
                                     {
                                         campusTitle.length ? campusTitle[0].name : false
@@ -63,6 +59,13 @@ class SingleCampus extends Component {
                     </div>
                 </div>
                 <div className="main main-raised main-translucent-light">
+                    <div className="col-md-4 center-block">
+                        <NavLink to={`/campuses/${this.props.match.params.campusId}/edit`}>
+                            <button className="btn btn-secondary">
+                                Edit Campus
+                            </button>
+                        </NavLink>
+                    </div>
                     <div className="col-md-4 center-block">
                         <NavLink to={'/students/addStudent'}>
                             <button className="btn btn-secondary">

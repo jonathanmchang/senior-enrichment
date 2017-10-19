@@ -37,7 +37,7 @@ class AddStudent extends Component {
     }
 
     componentDidMount() {
-        // console.log('Mounting.....')
+        console.log('Mounting.....')
         this.props.fetchCampuses()
 
     }

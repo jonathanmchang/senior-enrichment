@@ -53,13 +53,14 @@ export function postNewCampus (campus, history) {
   };
 }
 export function putCampus (campus, campusId, history) {
-
+  console.log('HITTING putCAMPUS')
   return function thunk (dispatch) {
     return axios.put('/api/campuses/' + campusId, campus)
       .then(res => res.data)
       .then(newCampus => {
-        dispatch(editCampus(newCampus.campus));
-        // history.push(`/campuses/`);
+        console.log('newCampus',newCampus)
+        dispatch(editCampus(newCampus));
+        history.push(`/campuses/`);
       });
   };
 }
