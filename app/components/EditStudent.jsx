@@ -121,7 +121,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         handleSubmit(event, name, age, email, campus, studentId) {
             const campusId = campus
             event.preventDefault()
-            console.log('handlesubmit', name,age,email,campus,studentId)
             dispatch(putStudent({name,age,email,campusId}, studentId, ownProps.history))
         }
     }

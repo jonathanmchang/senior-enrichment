@@ -22,7 +22,8 @@ api.get('/students/:id', (req,res,next) => {
 	Student.findOne({
 		where: {
 			id: Number(req.params.id)
-		}
+		},
+		include: [Campus]
 	})
 	.then(student => {
 		res.json(student)

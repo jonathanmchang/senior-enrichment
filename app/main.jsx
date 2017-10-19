@@ -16,6 +16,7 @@ import AddCampus from './components/AddCampus';
 import AddStudent from './components/AddStudent';
 import EditCampus from './components/EditCampus';
 import EditStudent from './components/EditStudent';
+import SingleStudent from './components/SingleStudent';
 
 
 render (
@@ -27,6 +28,7 @@ render (
           <Route path="/home" component={Home} /> 
           <Route exact path='/students/addStudent' component={AddStudent} />
           <Route path='/students/:studentId/edit' component={EditStudent} />
+          <Route path='/students/:studentId' component={SingleStudent} />
           <Route path="/students" component={Students} />
           <Route exact path='/campuses/addCampus' component={AddCampus} />
           <Route exact path='/campuses' component={Campuses} />
