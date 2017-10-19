@@ -15,7 +15,7 @@ const studentRow = (student, deleteStudent, index) => {
             <td>{student.campus ? student.campus.name : 'None'}</td>
             <td>{student.email}</td>
             <td className='td-actions text-right'>
-                {/*<NavLink to={'/students/' + student.id}>
+                <NavLink to={'/students/' + student.id}>
                     <button type='button' rel='tooltip' title='View Profile' className='btn btn-info btn-simple btn-xs'>
                         <i className='fa fa-user'></i>
                     </button>
@@ -24,7 +24,7 @@ const studentRow = (student, deleteStudent, index) => {
                     <button type='button' rel='tooltip' title='Edit Profile' className='btn btn-info btn-simple btn-xs'>
                         <i className='fa fa-pencil'></i>
                     </button>
-                </NavLink>*/}
+                </NavLink>
                 <button type='button' rel='tooltip' title='Delete Profile'            className='btn btn-info btn-simple btn-xs' onClick={()           =>deleteStudent(student.id)}>
                     <i className='fa fa-ban'></i>
                 </button>
@@ -48,11 +48,7 @@ class Students extends Component {
                 <div className="header header-nofilter">
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-12">
-                                <br />
-                                <br />
-                                <br />
-                                <br />
+                            <div className="col-md-12 test-padding">
                                 <h1 className="title text-center" style={{color: "white"}}>All Students</h1>
                             </div>
                         </div>
