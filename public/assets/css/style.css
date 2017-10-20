@@ -24,6 +24,9 @@ li .active {
     color:white;
 }
 
+.btn-add {
+    margin-top: 50px;
+}
 .btn-edit {
     margin-top: 50px;
 }

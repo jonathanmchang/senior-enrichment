@@ -72,7 +72,7 @@ class EditStudent extends Component {
                             <div className='col-md-8 col-md-offset-2'>
                                 <form onSubmit={(event) => this.props.handleSubmit(event,this.state.name,this.state.age,this.state.email,this.state.campus,studentId)}>
                                     <div>
-                                        <label className="control-label">Student Name!!!</label>
+                                        <label className="control-label">Student Name</label>
                                         <input type='text' className='form-control' name='name' placeholder={this.state.tempStudent.name} onChange={this.handleName}/>
                                     </div>
                                     <div>
