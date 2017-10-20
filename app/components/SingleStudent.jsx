@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchStudent } from '../reducers';
 import axios from 'axios';
 
-
+// Practice with regular REACT :-)
 
 class SingleStudent extends Component {
     constructor(props) {
