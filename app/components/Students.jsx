@@ -57,7 +57,7 @@ class Students extends Component {
                 <div className="main main-raised main-translucent-light">
                     <div className="text-center">
                         <NavLink to={'/students/addStudent'}>
-                            <button className="btn btn-secondary">
+                            <button className="btn btn-secondary btn-edit">
                                 Add New Student
                             </button>
                         </NavLink>

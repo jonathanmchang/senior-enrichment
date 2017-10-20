@@ -60,12 +60,12 @@ class SingleCampus extends Component {
                 <div className="main main-raised main-translucent-light">
                     <div className="text-center">
                         <NavLink to={`/campuses/${this.props.match.params.campusId}/edit`}>
-                            <button className="btn btn-secondary">
+                            <button className="btn btn-secondary btn-edit">
                                 Edit Campus
                             </button>
                         </NavLink>
                         <NavLink to={'/students/addStudent'}>
-                            <button className="btn btn-secondary">
+                            <button className="btn btn-secondary btn-add">
                                 Add New Student
                             </button>
                         </NavLink>

@@ -44,6 +44,10 @@ class SingleStudent extends Component {
                     <h3>Age: {this.state.age}</h3>
                     <h3>Email: {this.state.email}</h3>
                     <h3>Campus: {this.state.campus}</h3>
+                    <NavLink to={`/students/${this.props.match.params.studentId}/edit`}>
+                        <button className='btn btn-secondary'>Edit Student
+                        </button>
+                    </NavLink>
                     <NavLink to={`/campuses/${this.state.campusId}`}>
                         <button className='btn btn-secondary'>Back to Campus
                         </button>
