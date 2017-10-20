@@ -3,15 +3,14 @@ import { withRouter, NavLink } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { fetchStudents, fetchCampuses, putStudent } from '../reducers';
+import axios from 'axios';
 
 class EditStudent extends Component {
     constructor(props) {
         super(props)
-        this.state ={
-            name: '',
-            age: null,
-            email: '',
-            campus: null
+        this.state = {
+            student: {},
+            tempStudent: {}   
         }
 
         this.handleName = this.handleName.bind(this)
@@ -20,6 +19,7 @@ class EditStudent extends Component {
         this.handleCampus = this.handleCampus.bind(this)
 
     }
+
     
     handleName(event) {
         this.setState({name: event.target.value})
@@ -38,9 +38,13 @@ class EditStudent extends Component {
     }
 
     componentDidMount() {
-        console.log('mounting......')
         this.props.fetchCampuses()
         this.props.fetchStudents()
+        axios.get(`/api/students/${this.props.match.params.studentId}`)
+            .then(res => res.data)
+            .then(student => {
+                this.setState({tempStudent: student})
+            })
     }
 
     render() {
@@ -68,16 +72,16 @@ class EditStudent extends Component {
                             <div className='col-md-8 col-md-offset-2'>
                                 <form onSubmit={(event) => this.props.handleSubmit(event,this.state.name,this.state.age,this.state.email,this.state.campus,studentId)}>
                                     <div>
-                                        <label className="control-label">Student Name</label>
-                                        <input type='text' className='form-control' name='name' onChange={this.handleName}/>
+                                        <label className="control-label">Student Name!!!</label>
+                                        <input type='text' className='form-control' name='name' placeholder={this.state.tempStudent.name} onChange={this.handleName}/>
                                     </div>
                                     <div>
                                         <label className="control-label">Age</label>
-                                        <input type='text' className='form-control' name='photo' onChange={this.handleAge}/>
+                                        <input type='text' className='form-control' name='photo' placeholder={this.state.tempStudent.age}onChange={this.handleAge}/>
                                     </div>
                                     <div>
                                         <label className="control-label">Email</label>
-                                        <input type='text' className='form-control' name='photo' onChange={this.handleEmail}/>
+                                        <input type='text' className='form-control' name='photo' placeholder={this.state.tempStudent.email}onChange={this.handleEmail}/>
                                     </div>
                                     <div>
                                         <label className="control-label">Campus</label>
@@ -111,14 +115,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         fetchCampuses() {
-            console.log('dispatching fetchCampuses')
             dispatch(fetchCampuses())
         },
         fetchStudents() {
-            console.log('dispatching fetchStudents')
             dispatch(fetchStudents())
         },
         handleSubmit(event, name, age, email, campus, studentId) {
+            console.log('*****',name,age,email,campus,studentId)
             const campusId = campus
             event.preventDefault()
             dispatch(putStudent({name,age,email,campusId}, studentId, ownProps.history))

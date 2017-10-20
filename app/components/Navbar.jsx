@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 
 export default () => (
-	<nav className="navbar navbar-fixed-top navbar-color-on-scroll">
+	<nav className="navbar navbar-fixed-top">
 	<div className="container">
 		<div className="navbar-header">
 		<NavLink className="navbar-brand" to={'/home'}>HOME</NavLink>

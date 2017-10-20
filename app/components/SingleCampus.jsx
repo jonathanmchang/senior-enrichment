@@ -35,7 +35,6 @@ const studentRow = (student, deleteStudent, index) => {
 class SingleCampus extends Component {
     
     componentDidMount() {
-        console.log('mounting........')
         this.props.fetchStudents()
         this.props.fetchCampuses()
     }
@@ -59,20 +58,18 @@ class SingleCampus extends Component {
                     </div>
                 </div>
                 <div className="main main-raised main-translucent-light">
-                    <div className="col-md-4 center-block">
+                    <div className="text-center">
                         <NavLink to={`/campuses/${this.props.match.params.campusId}/edit`}>
                             <button className="btn btn-secondary">
                                 Edit Campus
                             </button>
                         </NavLink>
-                    </div>
-                    <div className="col-md-4 center-block">
                         <NavLink to={'/students/addStudent'}>
                             <button className="btn btn-secondary">
                                 Add New Student
                             </button>
                         </NavLink>
-                    </div>                            
+                    </div>                         
                     <div className="section">
                         <div className="container">
                             <table className="table">
@@ -109,11 +106,9 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch, ownProps) {
     return {
         fetchStudents() {
-            console.log('dispatching.........')
             dispatch(fetchStudents())
         },
         fetchCampuses() {
-            console.log('dispatching.......')
             dispatch(fetchCampuses())
         },
         deleteStudent(studentId) {
